@@ -1,0 +1,288 @@
+/* Global Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-dark: #2c001e;
+    --bg-light: #ff0055;
+    --glass-bg: rgba(255, 255, 255, 0.1);
+    --glass-border: rgba(255, 255, 255, 0.2);
+    --text-color: #fff;
+    --highlight: #ffcc00;
+    /* Gold */
+    --neon-pink: #ff00ff;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-color);
+    background: radial-gradient(circle at center, #4a0033 0%, #1a0011 100%);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Cosmic Background Animation */
+.background-anim {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(120deg, #2c001e, #590d22, #800f2f, #2c001e);
+    opacity: 0.6;
+    animation: galaxyMove 20s infinite linear;
+    z-index: -2;
+}
+
+@keyframes galaxyMove {
+    0% {
+        transform: translate(0, 0);
+    }
+
+    50% {
+        transform: translate(-10%, -10%);
+    }
+
+    100% {
+        transform: translate(0, 0);
+    }
+}
+
+/* Glassmorphism Card */
+.card-container {
+    width: 90%;
+    max-width: 450px;
+    background: rgba(40, 40, 40, 0.6);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 25px;
+    padding: 40px;
+    text-align: center;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+    position: relative;
+    z-index: 10;
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.card-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(255, 0, 150, 0.3);
+}
+
+/* Typography */
+h1 {
+    font-family: 'Cinzel', serif;
+    font-size: 2rem;
+    margin-bottom: 10px;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: 1rem;
+    color: #ddd;
+    margin-bottom: 25px;
+    line-height: 1.5;
+}
+
+.small-text {
+    font-size: 0.8rem;
+    color: #aaa;
+    margin-top: -10px;
+    margin-bottom: 25px;
+}
+
+.script-font {
+    font-family: 'Dancing Script', cursive;
+    color: var(--highlight);
+    font-size: 3rem;
+}
+
+/* Inputs & Buttons */
+input[type="text"] {
+    width: 100%;
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--glass-border);
+    border-radius: 10px;
+    color: white;
+    font-size: 1.1rem;
+    text-align: center;
+    margin-bottom: 20px;
+    outline: none;
+    transition: 0.3s;
+}
+
+input[type="text"]:focus {
+    border-color: var(--neon-pink);
+    box-shadow: 0 0 10px rgba(255, 0, 255, 0.3);
+}
+
+.btn {
+    padding: 12px 30px;
+    font-size: 1rem;
+    font-weight: 600;
+    background: linear-gradient(45deg, #ff0055, #ff00aa);
+    border: none;
+    border-radius: 50px;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    box-shadow: 0 5px 15px rgba(255, 0, 85, 0.4);
+}
+
+.btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(255, 0, 85, 0.6);
+}
+
+.btn.secondary {
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    margin-left: 10px;
+    box-shadow: none;
+}
+
+.btn.secondary:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Steps Animation */
+.step {
+    display: none;
+    animation: fadeIn 0.8s ease forwards;
+}
+
+.step.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Icons */
+.icon-lock {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    animation: float 3s infinite ease-in-out;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.heart-icon {
+    font-size: 5rem;
+    color: #ff4d6d;
+    animation: beat 1s infinite;
+    margin-bottom: 10px;
+}
+
+@keyframes beat {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+/* Particle Effects (Simple CSS Stars) */
+.particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* Reveal Message Specifics */
+#reveal-message {
+    font-size: 1.4rem;
+    color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* Music Control */
+#music-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    z-index: 100;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Mobile Tweaks */
+@media (max-width: 600px) {
+    .card-container {
+        padding: 30px 20px;
+        width: 95%;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    .script-font {
+        font-size: 2.5rem;
+    }
+
+    .btn-group {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .btn.secondary {
+        margin-left: 0;
+    }
+}

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Secret Message...</title>
+    <link rel="stylesheet" href="style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="background-anim"></div>
+    <div class="particles" id="particles"></div>
+
+    <div class="card-container">
+
+        <!-- STEP 1: INTRO (Suspense) -->
+        <div id="step-intro" class="step active">
+            <div class="icon-lock">🔒</div>
+            <h1>Encrypted Message</h1>
+            <p>A secret message has been left for you.</p>
+            <p class="small-text">To unlock it, you must verify your identity.</p>
+            <button class="btn" onclick="nextStep('step-intro', 'step-name')">Decrypt Message</button>
+        </div>
+
+        <!-- STEP 2: NAME INPUT -->
+        <div id="step-name" class="step hidden">
+            <h2>Identity Verification</h2>
+            <p>Who are you?</p>
+            <input type="text" id="user-name" placeholder="Enter your Name..." autocomplete="off">
+            <button class="btn" onclick="validateName()">Continue</button>
+        </div>
+
+        <!-- STEP 3: PLAYFUL CHECK -->
+        <div id="step-check" class="step hidden">
+            <h2>Security Question</h2>
+            <p>Are you the cutest person in the world?</p>
+            <div class="btn-group">
+                <button class="btn" onclick="nextStep('step-check', 'step-reveal')">Yes, obviously! 💅</button>
+                <button class="btn secondary" onclick="nextStep('step-check', 'step-reveal')">I think so? 🥺</button>
+            </div>
+        </div>
+
+        <!-- STEP 4: THE REVEAL -->
+        <div id="step-reveal" class="step hidden">
+            <div class="heart-icon">💖</div>
+            <h1 id="reveal-title" class="script-font">Hello...</h1>
+            <p id="reveal-message" class="typing-text"></p>
+            <div id="extra-hearts"></div>
+            <button class="btn" style="margin-top: 20px;" onclick="nextStep('step-reveal', 'step-ask')">One Last
+                Question... 🥺</button>
+        </div>
+
+        <!-- STEP 5: THE PROPOSAL (Chasing No) -->
+        <div id="step-ask" class="step hidden">
+            <h1 class="script-font">Will you be mine? 🌹</h1>
+            <p>I promise to make you smile every day.</p>
+            <div class="btn-group-interactive">
+                <button class="btn yes-btn" onclick="nextStep('step-ask', 'step-success')">YES, of course! 😍</button>
+                <button class="btn no-btn" id="no-btn">No 😢</button>
+            </div>
+        </div>
+
+        <!-- STEP 6: FINAL SUCCESS -->
+        <div id="step-success" class="step hidden">
+            <h1 class="script-font">Yayyy! 🎉❤️</h1>
+            <p>You just made me the happiest person alive!</p>
+            <div class="heart-pulse">💑</div>
+        </div>
+
+    </div>
+
+    <!-- Hidden Audio -->
+    <audio id="bg-music" loop>
+        <!-- Replace 'music.mp3' with your song file name or rename your file to 'music.mp3' -->
+        <source src="music.mp3" type="audio/mpeg">
+        <!-- Fallback online track if local file is missing -->
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3" type="audio/mpeg">
+    </audio>
+    <button id="music-btn" class="hidden">🎵</button>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
